@@ -1,14 +1,13 @@
 package com.barwickapplications.vlsmsubnetmaskcalculator;
 
-import android.util.Size;
-
 import java.util.HashMap;
 
-public class VLSM extends HashMap {
+class VLSM extends HashMap {
 
-    public static HashMap<Integer, Integer> prefixAndNumberOfAddresses;
-    public static HashMap<Integer, String> prefixAndSubnets;
+    private static HashMap<Integer, Integer> prefixAndNumberOfAddresses;
+    private static HashMap<Integer, String> prefixAndSubnets;
 
+    /* includes gateway and broad cast
     static {
         prefixAndNumberOfAddresses = new HashMap<Integer, Integer>();
         prefixAndNumberOfAddresses.put(8, 16777216);
@@ -34,6 +33,33 @@ public class VLSM extends HashMap {
         prefixAndNumberOfAddresses.put(28, 16);
         prefixAndNumberOfAddresses.put(29, 8);
         prefixAndNumberOfAddresses.put(30, 4);
+    }*/
+
+    static {
+        prefixAndNumberOfAddresses = new HashMap<Integer, Integer>();
+        prefixAndNumberOfAddresses.put(8, 16777214);
+        prefixAndNumberOfAddresses.put(9, 8388606);
+        prefixAndNumberOfAddresses.put(10, 4194302);
+        prefixAndNumberOfAddresses.put(11, 2097150);
+        prefixAndNumberOfAddresses.put(12, 1048574);
+        prefixAndNumberOfAddresses.put(13, 524286);
+        prefixAndNumberOfAddresses.put(14, 262142);
+        prefixAndNumberOfAddresses.put(15, 131070);
+        prefixAndNumberOfAddresses.put(16, 65534);
+        prefixAndNumberOfAddresses.put(17, 32766);
+        prefixAndNumberOfAddresses.put(18, 16382);
+        prefixAndNumberOfAddresses.put(19, 8190);
+        prefixAndNumberOfAddresses.put(20, 4094);
+        prefixAndNumberOfAddresses.put(21, 2046);
+        prefixAndNumberOfAddresses.put(22, 1022);
+        prefixAndNumberOfAddresses.put(23, 510);
+        prefixAndNumberOfAddresses.put(24, 254);
+        prefixAndNumberOfAddresses.put(25, 126);
+        prefixAndNumberOfAddresses.put(26, 62);
+        prefixAndNumberOfAddresses.put(27, 30);
+        prefixAndNumberOfAddresses.put(28, 14);
+        prefixAndNumberOfAddresses.put(29, 6);
+        prefixAndNumberOfAddresses.put(30, 2);
     }
 
     static {
@@ -63,43 +89,46 @@ public class VLSM extends HashMap {
         prefixAndSubnets.put(30, "255.255.255.252");
     }
     
-    public String getSubnetFromPrefix(int prefixLength) {
+    public static String getSubnetFromPrefix(int prefixLength) {
         return prefixAndSubnets.get(prefixLength);
     }
 
-    public int getNumberOfAddressesFromPrefix(int prefixLength) {
+    public static int getNumberOfAddressesFromPrefix(int prefixLength) {
         return prefixAndNumberOfAddresses.get(prefixLength);
     }
 
-    public int getPrefixFromNumberOfAddresses(int numberOfAddresses) {
+    public static int getPrefixFromNumberOfAddresses(int numberOfAddresses) {
+        int entryKey = 0;
         int closestHigherValue = 16777217;
         for (HashMap.Entry<Integer, Integer> entry : prefixAndNumberOfAddresses.entrySet())
         {
             int entryValue = entry.getValue();
-            if (entryValue > numberOfAddresses && entryValue < closestHigherValue) {
-                return entry.getKey();
+            if (entryValue >= numberOfAddresses && entryValue < closestHigherValue) {
+                closestHigherValue = entryValue;
+                entryKey = entry.getKey();
             }
         }
-        return 0;
+
+        return entryKey;
     }
 
-    public int getPrefixFromSubnet(String subnet) {
+    public static int getPrefixFromSubnet(String subnet) {
         for (HashMap.Entry<Integer, String> entry : prefixAndSubnets.entrySet())
         {
             String entryValue = entry.getValue();
-            if (entryValue == subnet) {
+            if (entryValue.equals(subnet)) {
                 return entry.getKey();
             }
         }
         return 0;
     }
 
-    public int getNumberOfAddressesFromSubnet(String subnet) {
+    public static int getNumberOfAddressesFromSubnet(String subnet) {
         int prefix = getPrefixFromSubnet(subnet);
         return prefixAndNumberOfAddresses.get(prefix);
     }
 
-    public String getSubnetFromumberOfAddresses(int numberOfAddresses) {
+    public static String getSubnetFromNumberOfAddresses(int numberOfAddresses) {
         int prefix = getPrefixFromNumberOfAddresses(numberOfAddresses);
         return prefixAndSubnets.get(prefix);
     }
