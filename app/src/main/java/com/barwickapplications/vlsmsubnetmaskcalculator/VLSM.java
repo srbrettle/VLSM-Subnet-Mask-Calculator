@@ -7,34 +7,6 @@ class VLSM extends HashMap {
     private static HashMap<Integer, Integer> prefixAndNumberOfAddresses;
     private static HashMap<Integer, String> prefixAndSubnets;
 
-    /* includes gateway and broad cast
-    static {
-        prefixAndNumberOfAddresses = new HashMap<Integer, Integer>();
-        prefixAndNumberOfAddresses.put(8, 16777216);
-        prefixAndNumberOfAddresses.put(9, 8388608);
-        prefixAndNumberOfAddresses.put(10, 4194304);
-        prefixAndNumberOfAddresses.put(11, 2097152);
-        prefixAndNumberOfAddresses.put(12, 1048576);
-        prefixAndNumberOfAddresses.put(13, 524288);
-        prefixAndNumberOfAddresses.put(14, 262144);
-        prefixAndNumberOfAddresses.put(15, 131072);
-        prefixAndNumberOfAddresses.put(16, 65536);
-        prefixAndNumberOfAddresses.put(17, 32768);
-        prefixAndNumberOfAddresses.put(18, 16384);
-        prefixAndNumberOfAddresses.put(19, 8192);
-        prefixAndNumberOfAddresses.put(20, 4096);
-        prefixAndNumberOfAddresses.put(21, 2048);
-        prefixAndNumberOfAddresses.put(22, 1024);
-        prefixAndNumberOfAddresses.put(23, 512);
-        prefixAndNumberOfAddresses.put(24, 256);
-        prefixAndNumberOfAddresses.put(25, 128);
-        prefixAndNumberOfAddresses.put(26, 64);
-        prefixAndNumberOfAddresses.put(27, 32);
-        prefixAndNumberOfAddresses.put(28, 16);
-        prefixAndNumberOfAddresses.put(29, 8);
-        prefixAndNumberOfAddresses.put(30, 4);
-    }*/
-
     static {
         prefixAndNumberOfAddresses = new HashMap<Integer, Integer>();
         prefixAndNumberOfAddresses.put(8, 16777214);

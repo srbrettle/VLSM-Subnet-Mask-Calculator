@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void calculateValues(View v) {
+        // Triggered by Calculate button click, calculate non-input values
         if(radPrefix.isChecked())
         {
             calculateSubnetAndNumberOfAddresses();
@@ -48,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void radPrefixSelected(View v) {
+        // Triggered by Prefix radio button selection
         clearFields();
         etPrefix.setEnabled(true);
         etSubnet.setEnabled(false);
@@ -56,6 +58,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void radSubnetSelected(View v) {
+        // Triggered by Subnet radio button selection
         clearFields();
         etPrefix.setEnabled(false);
         etSubnet.setEnabled(true);
@@ -64,6 +67,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void radNumberOfAddressesSelected(View v) {
+        // Triggered by # Addresses radio button selection
         clearFields();
         etPrefix.setEnabled(false);
         etSubnet.setEnabled(false);
@@ -84,6 +88,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void clearFields() {
+        // Clears all EditText input fields
         etPrefix.setText("");
         etSubnet.setText("");
         etNumberOfAddresses.setText("");
@@ -91,7 +96,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void calculateSubnetAndNumberOfAddresses() {
-
+        // Calculates Subnet and # Addresses from Prefix Length input
         try {
             int prefixLength = Integer.parseInt(etPrefix.getText().toString());
             etSubnet.setText(VLSM.getSubnetFromPrefix(prefixLength));
@@ -107,6 +112,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void calculatePrefixAndNumberOfAddresses() {
+        // Calculates Prefix Length and # Addresses from Subnet input
         try {
             String subnet = etSubnet.getText().toString();
             //Do Validation to ensure subnet
@@ -122,6 +128,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void calculatePrefixAndSubnet() {
+        // Calculates Prefix Length and Subnet from # Addresses input
         try {
             int numberOfAddresses = Integer.parseInt(etNumberOfAddresses.getText().toString());
             int prefix = VLSM.getPrefixFromNumberOfAddresses(numberOfAddresses);
