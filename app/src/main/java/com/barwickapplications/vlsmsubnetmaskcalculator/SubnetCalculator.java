@@ -18,10 +18,9 @@ public class SubnetCalculator  extends android.support.v4.app.Fragment {
     private EditText etPrefix;
     private EditText etSubnet;
     private EditText etGatewayAddress;
-    private TextView tvBlockSize;
+    private TextView tvResult;
     private RadioButton radPrefix;
     private RadioButton radSubnet;
-    private RadioButton radNumberOfAddresses;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -32,7 +31,7 @@ public class SubnetCalculator  extends android.support.v4.app.Fragment {
         etPrefix = view.findViewById(R.id.etPrefix);
         etSubnet = view.findViewById(R.id.etSubnet);
         etGatewayAddress = view.findViewById(R.id.etGatewayAddress);
-        tvBlockSize = view.findViewById((R.id.tvBlockSize));
+        tvResult = view.findViewById((R.id.tvResult));
         radPrefix = view.findViewById(R.id.radPrefix);
         radSubnet = view.findViewById(R.id.radSubnet);
 
@@ -109,16 +108,12 @@ public class SubnetCalculator  extends android.support.v4.app.Fragment {
         radSubnet.performClick();
     }
 
-    public void etNumberOfAddressesSelected() {
-        radNumberOfAddresses.performClick();
-    }
-
     private void clearFields() {
         // Clears all EditText input fields
         etPrefix.setText("");
         etSubnet.setText("");
         etGatewayAddress.setText("");
-        tvBlockSize.setText(String.format("Gateway Address = {1}\nAvailable range: {2} - {3}\nBroadcast Addresses:\n{4}", etGatewayAddress.getText()));
+        tvResult.setText(getString(R.string.result_default));
     }
 
     private void calculateSubnetAndNumberOfAddresses() {
@@ -204,6 +199,6 @@ public class SubnetCalculator  extends android.support.v4.app.Fragment {
                 String.valueOf(broadcastAddress[3]);
 
 
-        tvBlockSize.setText(String.format("Gateway Address = {1}\nAvailable range: {2} - {3}\nBroadcast Addresses:\n{4}", etGatewayAddress.getText(), strFirstAddress, strFinalAddress, strBroadcastAddress));
+        tvResult.setText(String.format(getString(R.string.result_values), etGatewayAddress.getText(), strFirstAddress, strFinalAddress, strBroadcastAddress));
     }
 }

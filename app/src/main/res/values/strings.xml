@@ -2,6 +2,8 @@
     <string name="app_name">VLSM Subnet Mask Calculator</string>
     <string name="block_size">Total Block Size used\n(Including Gateway and Broadcast Addresses):\n%s</string>
     <string name="block_size_default">Total Block Size used\n(Including Gateway and Broadcast Addresses):\nN/A</string>
+    <string name="result_default">Gateway Address = N/A\nAvailable range: N/A\nBroadcast Addresses:\nN/A</string>
+    <string name="result_values">Gateway Address = %s\nAvailable range: %s - %s\nBroadcast Addresses: %s</string>
     <string name="prefix">Prefix</string>
     <string name="subnet_mask">Subnet Mask</string>
     <string name="number_of_addresses"># Addresses</string>

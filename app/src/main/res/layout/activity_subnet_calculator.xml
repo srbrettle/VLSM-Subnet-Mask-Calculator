@@ -56,7 +56,8 @@
                 android:layout_weight="1"
                 android:ems="10"
                 android:hint="Gateway Address"
-                android:inputType="number" />
+                android:inputType="number|numberDecimal"
+                android:digits="0123456789." />
 
             <EditText
                 android:id="@+id/etPrefix"
@@ -89,11 +90,11 @@
         android:text="@string/calculate" />
 
     <TextView
-        android:id="@+id/tvBlockSize"
+        android:id="@+id/tvResult"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAlignment="center"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
-        android:text="@string/block_size_default" />
+        android:text="@string/result_default" />
 
 </LinearLayout>
