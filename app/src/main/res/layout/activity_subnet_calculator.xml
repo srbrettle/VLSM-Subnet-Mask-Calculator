@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".EquivalentValues">
+    tools:context=".SubnetCalculator">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -15,6 +15,17 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tbGatewayAddress"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="Gateway Address"
+                android:textAlignment="center"
+                android:gravity="center"
+                android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                android:textColor="@android:color/black" />
 
             <RadioButton
                 android:id="@+id/radPrefix"
@@ -30,13 +41,6 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:text="@string/subnet_mask" />
-
-            <RadioButton
-                android:id="@+id/radNumberOfAddresses"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:text="@string/number_of_addresses" />
         </RadioGroup>
 
 
@@ -44,6 +48,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical" >
+
+            <EditText
+                android:id="@+id/etGatewayAddress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ems="10"
+                android:hint="Gateway Address"
+                android:inputType="number" />
 
             <EditText
                 android:id="@+id/etPrefix"
@@ -64,16 +77,6 @@
                 android:hint="@string/subnet_mask"
                 android:inputType="number|numberDecimal"
                 android:digits="0123456789." />
-
-            <EditText
-                android:id="@+id/etNumberOfAddresses"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:enabled="false"
-                android:ems="10"
-                android:hint="@string/number_of_addresses"
-                android:inputType="number" />
 
         </LinearLayout>
 
