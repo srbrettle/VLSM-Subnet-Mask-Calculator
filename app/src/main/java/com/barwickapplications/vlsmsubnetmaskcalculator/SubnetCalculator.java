@@ -71,7 +71,7 @@ public class SubnetCalculator  extends android.support.v4.app.Fragment {
 
     public void calculateValues() {
         // Triggered by Calculate button click, calculate non-input values
-        if (!(etGatewayAddress.getText().toString().equals("")) && (etGatewayAddress.getText().toString().split(".").length == 4)) {
+        if (!(etGatewayAddress.getText().toString().equals("")) && (etGatewayAddress.getText().toString().split("[.]").length == 4)) {
             if (radPrefix.isChecked()) {
                 calculateSubnetAndNumberOfAddresses();
             } else if (radSubnet.isChecked()) {
@@ -151,7 +151,7 @@ public class SubnetCalculator  extends android.support.v4.app.Fragment {
 
 
     public void calculateAddressRange(int numberOfAddresses) {
-        String[] strGatewayAddress = etGatewayAddress.getText().toString().split(".");
+        String[] strGatewayAddress = etGatewayAddress.getText().toString().split("[.]");
 
         int[] gatewayAddress = {
                 Integer.parseInt(strGatewayAddress[0]),
