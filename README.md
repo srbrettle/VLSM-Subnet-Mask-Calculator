@@ -1,6 +1,6 @@
 # VLSM-Subnet-Mask-Calculator
 
-Calculates Prefix length, Subnet Mask, and Number of IP Addresses available.
+Calculates Subnet Mask, CIDR Prefix Length, # IP Addresses, Gateway/Broadcast Addresses, Available IP Address Range, Total Block Size.
 
 View at https://play.google.com/store/apps/details?id=com.barwickapplications.vlsmsubnetmaskcalculator
 
