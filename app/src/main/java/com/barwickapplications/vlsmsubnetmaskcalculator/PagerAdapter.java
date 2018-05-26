@@ -5,8 +5,8 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
-public class PagerAdapter extends FragmentStatePagerAdapter {
-    int mNumOfTabs;
+class PagerAdapter extends FragmentStatePagerAdapter {
+    private final int mNumOfTabs;
 
     public PagerAdapter(FragmentManager fm, int NumOfTabs) {
         super(fm);
@@ -18,14 +18,9 @@ public class PagerAdapter extends FragmentStatePagerAdapter {
 
         switch (position) {
             case 0:
-                EquivalentValues equivalentValues = new EquivalentValues();
-                return equivalentValues;
+                return new EquivalentValues();
             case 1:
-                SubnetCalculator subnetCalculator = new SubnetCalculator();
-                return subnetCalculator;
-            case 2:
-                VlsmAllocation vlsmAllocation = new VlsmAllocation();
-                return vlsmAllocation;
+                return new VlsmAllocation();
             default:
                 return null;
         }

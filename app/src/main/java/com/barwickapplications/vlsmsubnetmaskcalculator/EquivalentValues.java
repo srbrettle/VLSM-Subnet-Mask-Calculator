@@ -80,7 +80,7 @@ public class EquivalentValues extends android.support.v4.app.Fragment {
         return view;
     }
 
-    public void calculateValues() {
+    private void calculateValues() {
         // Triggered by Calculate button click, calculate non-input values
         if(radPrefix.isChecked())
         {
@@ -96,7 +96,7 @@ public class EquivalentValues extends android.support.v4.app.Fragment {
         }
     }
 
-    public void radPrefixSelected() {
+    private void radPrefixSelected() {
         // Triggered by Prefix radio button selection
         clearFields();
         etPrefix.setEnabled(true);
@@ -105,7 +105,7 @@ public class EquivalentValues extends android.support.v4.app.Fragment {
         etPrefix.requestFocus();
     }
 
-    public void radSubnetSelected() {
+    private void radSubnetSelected() {
         // Triggered by Subnet radio button selection
         clearFields();
         etPrefix.setEnabled(false);
@@ -114,7 +114,7 @@ public class EquivalentValues extends android.support.v4.app.Fragment {
         etSubnet.requestFocus();
     }
 
-    public void radNumberOfAddressesSelected() {
+    private void radNumberOfAddressesSelected() {
         // Triggered by # Addresses radio button selection
         clearFields();
         etPrefix.setEnabled(false);
@@ -123,15 +123,15 @@ public class EquivalentValues extends android.support.v4.app.Fragment {
         etNumberOfAddresses.requestFocus();
     }
 
-    public void etPrefixSelected() {
+    private void etPrefixSelected() {
         radPrefix.performClick();
     }
 
-    public void etSubnetSelected() {
+    private void etSubnetSelected() {
         radSubnet.performClick();
     }
 
-    public void etNumberOfAddressesSelected() {
+    private void etNumberOfAddressesSelected() {
         radNumberOfAddresses.performClick();
     }
 
@@ -150,10 +150,16 @@ public class EquivalentValues extends android.support.v4.app.Fragment {
             etSubnet.setText(VLSM.getSubnetFromPrefix(prefixLength));
             int numberOfAddresses = VLSM.getNumberOfAddressesFromPrefix(prefixLength);
             etNumberOfAddresses.setText(String.valueOf(numberOfAddresses));
+            // TODO: Handle more elegantly?
+            if (numberOfAddresses != 2147483646) {
+                tvBlockSize.setText(String.format(getString(R.string.block_size),String.valueOf(numberOfAddresses + 2)));
+            }
+            else {
+                tvBlockSize.setText(String.format(getString(R.string.block_size),"2147483648"));
+            }
 
-            tvBlockSize.setText(String.format(getString(R.string.block_size),String.valueOf(numberOfAddresses + 2)));
         } catch (Exception e) {
-            Toast.makeText(getActivity(), "Invalid prefix used (Use 8 - 30)", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity(), "Invalid prefix used (Use 1 - 30)", Toast.LENGTH_SHORT).show();
             clearFields();
 
         }
@@ -167,8 +173,14 @@ public class EquivalentValues extends android.support.v4.app.Fragment {
             etPrefix.setText(String.valueOf(VLSM.getPrefixFromSubnet(subnet)));
             int numberOfAddresses = VLSM.getNumberOfAddressesFromSubnet(subnet);
             etNumberOfAddresses.setText(String.valueOf(numberOfAddresses));
+            // TODO: Handle more elegantly?
+            if (numberOfAddresses != 2147483646) {
+                tvBlockSize.setText(String.format(getString(R.string.block_size),String.valueOf(numberOfAddresses + 2)));
+            }
+            else {
+                tvBlockSize.setText(String.format(getString(R.string.block_size),"2147483648"));
+            }
 
-            tvBlockSize.setText(String.format(getString(R.string.block_size),String.valueOf(numberOfAddresses + 2)));
         } catch (Exception e) {
             Toast.makeText(getActivity(), "Invalid subnet used", Toast.LENGTH_SHORT).show();
             clearFields();
