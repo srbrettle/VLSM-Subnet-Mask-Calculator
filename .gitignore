@@ -13,3 +13,5 @@
 .idea/vcs.xml
 app/src/androidTest/java/com/barwickapplications/vlsmsubnetmaskcalculator/ExampleInstrumentedTest.java
 app/src/test/java/com/barwickapplications/vlsmsubnetmaskcalculator/ExampleUnitTest.java
+app/release/app-release.apk
+app/release/output.json
