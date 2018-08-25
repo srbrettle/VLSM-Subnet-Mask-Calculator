@@ -1,4 +1,4 @@
-# VLSM-Subnet-Mask-Calculator
+# VLSM-Subnet-Mask-Calculator [![Build Status](https://travis-ci.org/srbrettle/VLSM-Subnet-Mask-Calculator.svg?branch=master)](https://travis-ci.org/srbrettle/VLSM-Subnet-Mask-Calculator)
 
 Calculates Subnet Mask, CIDR Prefix Length, # IP Addresses, Gateway/Broadcast Addresses, Available IP Address Range, Total Block Size.
 
